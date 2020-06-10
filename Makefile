@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT_NAME = builderporo
+PROJECT_NAME = s3tagger
 
 #-----------------------------------------------------------------------
 # Rules of Rules : Grouped rules that _doathing_

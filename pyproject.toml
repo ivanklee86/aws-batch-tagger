@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "s3tagger"
+version = "0.0.1"
+description = "A tool for taging lots and lots and lots of S3 objects."
+authors = ["Ivan Lee <ivan@aaptiv.com>"]
+readme = "README.md"
+repository = "https://github.com/ivanklee86/s3tagger"
+
+[tool.poetry.scripts]
+builderporo = 's3tagger.cli:cli'
+
+[tool.poetry.dependencies]
+python = "^3.8"
+boto3 = "^1.12.47"
+click = "^7.1.2"
+aaptivsecrets = "^0.3.35"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.3.5"
+pytest-cov = "^2.8.1"
+pytest-flake8 = "^1.0.4"
+pytest-html = "^2.0.1"
+pytest-xdist = "^1.31.0"
+mypy = "^0.761"
+pylint = "^2.4.4"
+bumpversion = "^0.5.3"
+pytest-mock = "^2.0.0"
+
+[[tool.poetry.source]]
+name = "Aaptiv"
+url = "https://pypiserver.aapdev.com/simple/"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

@@ -1,0 +1,3 @@
+[flake8]
+ignore = E501
+exclude = build,dist,data,config.py,config-server.py

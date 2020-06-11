@@ -59,3 +59,4 @@ def cli(ctx: Context, verbose: bool) -> None:
     """A CLI to tag lots and lots of files in a bucket."""
     ctx.verbose = verbose
     ctx.config = aaptivsecrets.get_env_var_dict_for_app("dev", "ios")
+    ctx.buckets = {}

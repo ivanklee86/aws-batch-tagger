@@ -4,7 +4,7 @@ from tests.test_utilities import constants
 
 def test_queue_lifecycle(queue):
     q = queue
-    loader.get_files(constants.BUCKET_NAME, q, [".png", ".txt"])
+    loader.get_files(constants.BUCKET_NAME, q, (".png", ".txt"))
 
     initial_queue_size = q.size
     item = q.get()

@@ -22,5 +22,9 @@ def create_queue(bucket_name: str, new: bool) -> persistqueue.SQLiteAckQueue:
     return persistqueue.SQLiteAckQueue(queue_folder, multithreading=True)
 
 
+def check_queue(bucket_name: str) -> bool:
+    queue_folder = os.path.join(DATA_DIR, bucket_name)
+    return os.path.exists(queue_folder)
+
 def delete_queue(bucket_name: str) -> None:
     shutil.rmtree(os.path.join(DATA_DIR, bucket_name))

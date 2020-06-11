@@ -3,8 +3,8 @@ import aaptivsecrets
 from click.testing import CliRunner
 from s3tagger.cli import Context
 from s3tagger.utilities import queueing
-
-BUCKET_NAME = "aaptiv-warner-prod"
+from s3tagger.utilities import aws
+from tests.test_utilities import constants
 
 @pytest.fixture()
 def runner():
@@ -20,10 +20,17 @@ def click_context():
 @pytest.fixture()
 def queue():
     try:
-        queueing.delete_queue(BUCKET_NAME)
+        queueing.delete_queue(constants.BUCKET_NAME)
     except:
         pass
 
-    queue = queueing.create_queue(BUCKET_NAME, new=True)
+    queue = queueing.create_queue(constants.BUCKET_NAME, new=True)
     yield queue
-    queueing.delete_queue(BUCKET_NAME)
+    queueing.delete_queue(constants.BUCKET_NAME)
+
+
+@pytest.fixture()
+def populated_queue(queue):
+    q = queue
+    aws.get_files(constants.BUCKET_NAME, q, [".png", ".txt"])
+    yield q

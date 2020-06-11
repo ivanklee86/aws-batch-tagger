@@ -3,7 +3,7 @@ import aaptivsecrets
 from click.testing import CliRunner
 from s3tagger.cli import Context
 from s3tagger.utilities import queueing
-from s3tagger.utilities import aws
+from s3tagger.utilities import loader
 from tests.test_utilities import constants
 
 @pytest.fixture()
@@ -32,5 +32,5 @@ def queue():
 @pytest.fixture()
 def populated_queue(queue):
     q = queue
-    aws.get_files(constants.BUCKET_NAME, q, [".png", ".txt"])
+    loader.get_files(constants.BUCKET_NAME, q, [".png", ".txt"])
     yield q

@@ -1,10 +1,10 @@
-from s3tagger.utilities import aws
+from s3tagger.utilities import loader
 from tests.test_utilities import constants
 
 
 def test_queue_lifecycle(queue):
     q = queue
-    aws.get_files(constants.BUCKET_NAME, q, [".png", ".txt"])
+    loader.get_files(constants.BUCKET_NAME, q, [".png", ".txt"])
 
     initial_queue_size = q.size
     item = q.get()

@@ -4,7 +4,7 @@ from click.testing import CliRunner
 from s3tagger.cli import Context
 from s3tagger.utilities import queueing
 
-BUCKET_NAME = "aaptiv-ivan-test"
+BUCKET_NAME = "aaptiv-warner-prod"
 
 @pytest.fixture()
 def runner():
@@ -19,6 +19,11 @@ def click_context():
 
 @pytest.fixture()
 def queue():
+    try:
+        queueing.delete_queue(BUCKET_NAME)
+    except:
+        pass
+
     queue = queueing.create_queue(BUCKET_NAME, new=True)
     yield queue
     queueing.delete_queue(BUCKET_NAME)

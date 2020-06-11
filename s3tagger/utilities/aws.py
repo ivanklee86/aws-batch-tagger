@@ -4,6 +4,7 @@ from persistqueue import SQLiteAckQueue
 
 S3 = boto3.client('s3')
 
+
 def get_files(bucket_name: str, queue: SQLiteAckQueue, contains: list) -> None:
     paginator = S3.get_paginator("list_objects_v2")
 

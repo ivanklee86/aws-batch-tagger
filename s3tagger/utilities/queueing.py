@@ -5,15 +5,11 @@ import shutil
 from rich import print
 from s3tagger import constants
 
+
 DATA_DIR = appdirs.user_data_dir(appname=constants.APP_NAME)
 
-def create_queue(bucket_name: str, new: bool) -> persistqueue.SQLiteAckQueue:
-    """
-    Creates a SQLite-backed persistant ACK Queue in the user's data directory.
 
-    :param bucket_name:
-    :return:
-    """
+def create_queue(bucket_name: str, new: bool) -> persistqueue.SQLiteAckQueue:
     queue_folder = os.path.join(DATA_DIR, bucket_name)
 
     if new:

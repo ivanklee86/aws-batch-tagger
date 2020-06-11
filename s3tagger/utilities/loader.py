@@ -11,7 +11,7 @@ def get_files(bucket_name: str, queue: SQLiteAckQueue, contains: list) -> None:
     with alive_bar() as bar:
         for page in paginator.paginate(Bucket=bucket_name):
             for file in page['Contents']:
-                if any(n in file['Key'] for n in contains):
+                if any(n.lower() in file['Key'].lower() for n in contains):
                     queue.put(file['Key'])
 
             bar()

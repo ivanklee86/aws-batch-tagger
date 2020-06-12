@@ -9,7 +9,7 @@ def test_worker(populated_queue):
     test_tag = f"test_{uuid.uuid4()}"
     q = populated_queue
 
-    worker.worker(bucket=constants.BUCKET_NAME, queue=q, tags={"test": test_tag})
+    worker.worker(1, bucket=constants.BUCKET_NAME, queue=q, tags={"test": test_tag})
 
     s3 = boto3.client('s3')
     versions_information = s3.list_object_versions(

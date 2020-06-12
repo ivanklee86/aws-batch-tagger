@@ -7,6 +7,7 @@ from s3tagger.utilities import queueing
 @click.option('--bucket', '-b', default="", type=str, help="S3 bucket.")
 @pass_context
 def cli(ctx: Context, bucket: str) -> None:
+    """Cleans up on-disk queue."""
     if queueing.check_queue(bucket):
         queueing.delete_queue(bucket)
 

@@ -10,6 +10,7 @@ from s3tagger.utilities import queueing, worker
 @click.option('--bucket', '-b', default="", type=str, help="S3 bucket.")
 @pass_context
 def cli(ctx: Context, bucket: str, tags: tuple, workers: int) -> None:
+    """Tags files in queue."""
     if not queueing.check_queue(bucket):
         raise click.UsageError(f"Queue for {bucket} does not exist!  Please run 's3transfer populate'.")
 

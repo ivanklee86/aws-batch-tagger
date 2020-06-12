@@ -8,6 +8,7 @@ from s3tagger.utilities import queueing, loader
 @click.option('--bucket', '-b', default="", type=str, help="S3 bucket.")
 @pass_context
 def cli(ctx: Context, bucket: str, match: tuple) -> None:
+    """Loads S3 files into disck-backed queue."""
     if queueing.check_queue(bucket):
         raise click.UsageError(f"Queue for {bucket} already exists!  Please run 's3transfer clean'.")
 

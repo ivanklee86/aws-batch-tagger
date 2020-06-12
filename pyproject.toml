@@ -4,16 +4,15 @@ version = "0.0.1"
 description = "A tool for taging lots and lots and lots of S3 objects."
 authors = ["Ivan Lee <ivan@aaptiv.com>"]
 readme = "README.md"
-repository = "https://github.com/ivanklee86/s3tagger"
+repository = "https://github.com/skyfit/s3tagger"
 
 [tool.poetry.scripts]
-builderporo = 's3tagger.cli:cli'
+s3tagger = 's3tagger.cli:cli'
 
 [tool.poetry.dependencies]
 python = "^3.8"
 boto3 = "^1.12.47"
 click = "^7.1.2"
-aaptivsecrets = "^0.3.35"
 alive-progress = "^1.5.1"
 rich = "^2.0.1"
 persist-queue = "^0.5.0"

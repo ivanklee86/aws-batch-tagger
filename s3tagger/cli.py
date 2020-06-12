@@ -4,7 +4,6 @@ With credit to https://github.com/pallets/click/tree/master/examples/complex.
 import os
 import sys
 import click
-import aaptivsecrets
 
 
 CONTEXT_SETTINGS = dict(auto_envvar_prefix='COMPLEX')
@@ -58,5 +57,3 @@ class ComplexCLI(click.MultiCommand):
 def cli(ctx: Context, verbose: bool) -> None:
     """A CLI to tag lots and lots of files in a bucket."""
     ctx.verbose = verbose
-    ctx.config = aaptivsecrets.get_env_var_dict_for_app("dev", "ios")
-    ctx.buckets = {}

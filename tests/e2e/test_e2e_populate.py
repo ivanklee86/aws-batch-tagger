@@ -9,4 +9,3 @@ def test_e2e_populate(runner, cleanup):  # noqa: F811
     result = runner.invoke(cli, ["populate", "-b", constants.BUCKET_NAME, "-m", ".png", "-m", ".txt"])
 
     assert result.exit_code == 0
-    assert "Tagged files" in result.output

@@ -25,7 +25,7 @@ def queue():
 @pytest.fixture()
 def populated_queue(queue):
     q = queue
-    loader.get_files(constants.BUCKET_NAME, q, (".png", ".txt"))
+    loader.get_files(constants.BUCKET_NAME, q, (".png", ".txt"), ("incoming",))
     yield q
 
 

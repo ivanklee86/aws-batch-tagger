@@ -12,9 +12,9 @@ def test_queue_lifecycle(queue):
     assert q.size < initial_queue_size
 
 
-def test_queue_lifecycle(queue):
+def test_queue_notin(queue):
     q = queue
-    loader.get_files(constants.BUCKET_NAME, q, (".png", ".txt"), ("incoming"))
+    loader.get_files(constants.BUCKET_NAME, q, (".png", ".txt"), ("incoming",))
 
     while not q.empty():
         item = q.get()

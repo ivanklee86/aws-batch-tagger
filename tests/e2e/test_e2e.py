@@ -9,9 +9,10 @@ from tests.test_utilities.fixtures import runner  # noqa: F401
 def test_e2e(runner):  # noqa: F811
     runner = CliRunner()
     test_file = "test.txt"
+    test_ignored_file = "incoming/noti.txt"
     tag = f"test_{uuid.uuid4()}"
 
-    populate_result = runner.invoke(cli, ["populate", "-b", constants.BUCKET_NAME, "-m", ".png", "-m", ".txt"])
+    populate_result = runner.invoke(cli, ["populate", "-b", constants.BUCKET_NAME, "-m", ".png", "-m", ".txt", "-n", "incoming"])
     process_result = runner.invoke(cli, ["process", "-b", constants.BUCKET_NAME, "-t", f"test:{tag}"])
     cleanup_result = runner.invoke(cli, ["clean", "-b", constants.BUCKET_NAME])
 
@@ -34,3 +35,10 @@ def test_e2e(runner):  # noqa: F811
 
         [test_pair] = [x for x in tagging['TagSet'] if x['Key'] == 'test']
         assert test_pair['Value'] == tag
+
+    not_tagging = s3.get_object_tagging(
+        Bucket=constants.BUCKET_NAME,
+        Key=test_ignored_file
+    )
+
+    assert not not_tagging['TagSet']

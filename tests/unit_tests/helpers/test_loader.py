@@ -10,3 +10,13 @@ def test_queue_lifecycle(queue):
     item = q.get()
     q.ack(item)
     assert q.size < initial_queue_size
+
+
+def test_queue_lifecycle(queue):
+    q = queue
+    loader.get_files(constants.BUCKET_NAME, q, (".png", ".txt"), ("incoming"))
+
+    while not q.empty():
+        item = q.get()
+        assert "noti.txt" not in item
+        q.ack(item)

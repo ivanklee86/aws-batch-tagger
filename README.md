@@ -45,11 +45,14 @@ Usage: s3tagger populate [OPTIONS]
   Loads S3 files into disck-backed queue.
 
 Options:
-  -m, --match TEXT   Keys must include one of these match strings to be
-                     processed.
+  -n, --not-match TEXT  Keys must NOT include one of these match strings to be
+                        processed.
 
-  -b, --bucket TEXT  S3 bucket.
-  --help             Show this message and exit.
+  -m, --match TEXT      Keys must include one of these match strings to be
+                        processed.
+
+  -b, --bucket TEXT     S3 bucket.
+  --help                Show this message and exit.
 ```
 
 
